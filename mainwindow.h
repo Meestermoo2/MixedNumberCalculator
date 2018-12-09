@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,17 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
+private slots:
+    void digitpressed();
+    void backspacepressed();
+    void CEpressed();
+    void evaluatepressed();
+    void spacepressed();
+    void multiplypressed();
+    void dividepressed();
+    void keyPressEvent(QKeyEvent *event);
+
 };
 
 #endif // MAINWINDOW_H
