@@ -75,10 +75,12 @@ void operator<<(Calculate &c, std::string& postfixExpression)
             }
         }
     }
-    while(!c.operands.empty())
+
+    std::stringstream out;
+    while(!c.operands.empty()) // constructs a new expression
     {
-        std::cout << "= "<< c.operands.top() << ' ';
+        out << c.operands.top() << ' ';
         c.operands.pop();
     }
-    std::cout << std::endl<< std::endl;
+    c.storedExpression = out.str();
 }

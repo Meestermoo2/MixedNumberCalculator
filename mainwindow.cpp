@@ -59,14 +59,15 @@ void MainWindow::backspacepressed()
 }
 
 void MainWindow::CEpressed()
-{ // delete everything
+{ // clear entry
     ui->Input->clear();
 }
 
 void MainWindow::Cpressed()
-{
+{ // clear everything
     ui->Input->clear();
-    ui->Output->clear();
+    ui->Eval->clear();
+    ui->RPN->clear();
 }
 
 
@@ -74,11 +75,23 @@ void MainWindow::evaluatepressed()
 {
     QString newLabel = (ui->Input->text());
     std::string parseString = newLabel.toStdString();
-    Parser temp;
-    temp << parseString;
-    temp >> parseString;
-    newLabel = QString::fromStdString(parseString);
-    ui->Output->setText(newLabel);
+    Parser parser;
+    Calculate calc;
+    try {
+        parser << parseString;
+        parser >> parseString;
+        calc << parseString;
+        newLabel = QString::fromStdString(parseString);
+        ui->RPN->setText(newLabel);
+        newLabel = QString::fromStdString(calc.getString());
+        ui->Eval->setText(newLabel);
+    } catch (Error e) {
+        ui->RPN->clear();
+        ui->Eval->setText(e.what());
+    } catch (...) {
+        ui->Eval->setText("An unknown error has occured.");
+    }
+
 }
 
 void MainWindow::spacepressed()
@@ -174,6 +187,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
             ui->pushButton_Space->released();
             break;
         case Qt::Key_Equal:
+            ui->pushButton_Evaluate->released();
+            break;
+        case Qt::Key_Return:
             ui->pushButton_Evaluate->released();
             break;
 //        case Qt::Key_Right: //doesnt really work
