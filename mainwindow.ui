@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>839</width>
-    <height>584</height>
+    <width>774</width>
+    <height>499</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,21 +17,65 @@
    <string notr="true">background-color: #212121 ;</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="History">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>20</y>
+      <width>231</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>231</width>
+      <height>461</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+	font-size: 20px;
+	border-style: inset;
+  	qproperty-alignment: ' AlignRight';
+  	border: 1px solid grey;
+  	border-color: ;
+	background-color: dimgrey;
+	color: white;
+	padding-top: 40 px;
+	line-height: 0.8;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight</set>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>30</y>
-      <width>221</width>
-      <height>20</height>
+      <x>530</x>
+      <y>20</y>
+      <width>231</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel 
 {
-	font-size: 15px;
+	font-size: 20px;
 	border-style: inset;
   	qproperty-alignment: 'AlignVCenter | AlignLeft';
+  	border: 1px solid grey;
+  	border-color: ;
+	background-color: dimgrey;
 	color: white;
 }</string>
     </property>
@@ -39,69 +83,25 @@
      <string>Your History</string>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea">
+   <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>599</x>
-      <y>59</y>
-      <width>201</width>
-      <height>451</height>
+      <x>530</x>
+      <y>60</y>
+      <width>230</width>
+      <height>3</height>
      </rect>
     </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>199</width>
-       <height>449</height>
-      </rect>
-     </property>
-     <widget class="QLabel" name="History">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>201</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel 
-{
-overflow: scroll;
-	font-size: 30px;
-	border-style: inset;
-  	qproperty-alignment: 'AlignRight';
-  	border: 1px solid grey;
-  	border-color: ;
-	background-color: dimgrey;
-	color: white;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight</set>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>46</x>
-      <y>56</y>
-      <width>511</width>
+      <x>20</x>
+      <y>20</y>
+      <width>491</width>
       <height>461</height>
      </rect>
     </property>
@@ -1139,7 +1139,7 @@ QPushButton:hover
            <property name="styleSheet">
             <string notr="true">QPushButton 
 {
-	font-size: 18px;
+	font-size: 15px;
 	background-color: dimgrey;
 	border: 1px solid gray;
 	border-color: ;
@@ -1162,6 +1162,48 @@ QPushButton:hover
            </property>
            <property name="text">
             <string>Clear History</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_Negate">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>-1</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton 
+{
+	font-size: 18px;
+	background-color: dimgrey;
+	border: 1px solid gray;
+	border-color: ;
+	color: white;
+}
+QPushButton:pressed
+{
+	background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #FF7832, stop: 1 #a39a9a)
+}
+QPushButton {
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+}
+QPushButton:hover
+{
+	background-color:#e0e0e0 ;
+	color: white;
+}</string>
+           </property>
+           <property name="text">
+            <string>±</string>
            </property>
           </widget>
          </item>

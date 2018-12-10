@@ -29,6 +29,7 @@ private slots:
     void spacepressed();
     void multiplypressed();
     void dividepressed();
+    void ClearHistorypressed();
     void keyPressEvent(QKeyEvent *event);
 
 };
