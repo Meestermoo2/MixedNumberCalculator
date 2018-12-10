@@ -34,6 +34,8 @@ private slots:
     void addpressed();
     void subtractpressed();
     void negatepressed();
+    void parenleftpressed();
+    void parenrightpressed();
     void keyPressEvent(QKeyEvent *event);
 
 };
