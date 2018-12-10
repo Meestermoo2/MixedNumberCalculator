@@ -31,8 +31,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Multiply, SIGNAL(released()), this, SLOT(multiplypressed()));
     connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
     connect(ui->pushButton_C, SIGNAL(released()), this, SLOT(Cpressed()));
-
-
 }
 
 MainWindow::~MainWindow()
@@ -73,21 +71,30 @@ void MainWindow::Cpressed()
 
 void MainWindow::evaluatepressed()
 {
-    QString newLabel = (ui->Input->text());
-    std::string parseString = newLabel.toStdString();
-    Parser parser;
-    Calculate calc;
     try {
+        QString newLabel = (ui->Input->text()), history;
+        std::string parseString = newLabel.toStdString();
+        Parser parser;
+        Calculate calc;
+
+        // Parse user input
         parser << parseString;
+
+        // Retrieve RPN expression
         parser >> parseString;
+        newLabel = history = QString::fromStdString(parseString); // Create QString obj out of RPN
+        ui->RPN->setText(newLabel); // Display RPN expression
+
+        // Calculate RPN expression
         calc << parseString;
-        newLabel = QString::fromStdString(parseString);
-        ui->RPN->setText(newLabel);
-        QString temp = ui->History->text();
-        temp.append('\n' + newLabel);
-        ui->History->setText(temp);
-        newLabel = QString::fromStdString(calc.getString());
-        ui->Eval->setText(newLabel);
+
+        // Retrieve evaluated item
+        calc >> parseString;
+        history += QString::fromStdString("= " + parseString); // Add to history string
+        ui->Eval->setText(QString::fromStdString("= " + parseString)); // Display Evaluated expression
+
+        history.prepend(ui->History->text() + '\n'); // save current history
+        ui->History->setText(history); // add history string to the label
     } catch (Error e) {
         ui->RPN->clear();
         ui->Eval->setText(e.what());
