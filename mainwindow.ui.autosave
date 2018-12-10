@@ -17,6 +17,40 @@
    <string notr="true">background-color: #212121 ;</string>
   </property>
   <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="History">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>60</y>
+      <width>231</width>
+      <height>451</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>-1</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel 
+{
+overflow: scroll;
+	font-size: 30px;
+	border-style: inset;
+  	qproperty-alignment: 'AlignRight';
+  	border: 1px solid grey;
+  	border-color: ;
+	background-color: dimgrey;
+	color: white;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight</set>
+    </property>
+   </widget>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
@@ -38,63 +72,6 @@
     <property name="text">
      <string>Your History</string>
     </property>
-   </widget>
-   <widget class="QScrollArea" name="scrollArea">
-    <property name="geometry">
-     <rect>
-      <x>599</x>
-      <y>59</y>
-      <width>201</width>
-      <height>451</height>
-     </rect>
-    </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
-    </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>199</width>
-       <height>449</height>
-      </rect>
-     </property>
-     <widget class="QLabel" name="History">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>201</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>-1</pointsize>
-       </font>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel 
-{
-overflow: scroll;
-	font-size: 30px;
-	border-style: inset;
-  	qproperty-alignment: 'AlignRight';
-  	border: 1px solid grey;
-  	border-color: ;
-	background-color: dimgrey;
-	color: white;
-}</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignRight</set>
-      </property>
-     </widget>
-    </widget>
    </widget>
    <widget class="QWidget" name="">
     <property name="geometry">
