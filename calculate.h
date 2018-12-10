@@ -11,6 +11,8 @@ class Calculate
         Calculate();
         ~Calculate();
 
+        std::string getString() const;
+
         friend
         void operator>>(Calculate &c, std::string& postfixExpression);
         friend

@@ -10,3 +10,7 @@ Calculate::~Calculate()
 
 }
 
+std::string Calculate::getString() const
+{
+    return storedExpression;
+}
