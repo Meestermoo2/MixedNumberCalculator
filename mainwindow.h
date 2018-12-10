@@ -30,12 +30,10 @@ private slots:
     void spacepressed();
     void multiplypressed();
     void dividepressed();
-<<<<<<< HEAD
     void ClearHistorypressed();
-=======
     void addpressed();
     void subtractpressed();
->>>>>>> 05e8df42cc82905a63887f670327a17398be04bc
+    void negatepressed();
     void keyPressEvent(QKeyEvent *event);
 
 };

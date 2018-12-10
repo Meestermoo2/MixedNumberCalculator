@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
     connect(ui->pushButton_C, SIGNAL(released()), this, SLOT(Cpressed()));
     connect(ui->pushButton_ClearHistory, SIGNAL(released()), this, SLOT(ClearHistorypressed()));
+    connect(ui->pushButton_Negate, SIGNAL(released()), this, SLOT(negatepressed()));
 }
 
 MainWindow::~MainWindow()
@@ -74,7 +75,13 @@ void MainWindow::ClearHistorypressed()
     ui->History->clear();
 }
 
+void MainWindow::negatepressed()
+{
+    QString newLabel;
 
+    newLabel = (ui->Input->text() + "-");
+    ui->Input->setText(newLabel);
+}
 void MainWindow::evaluatepressed()
 {
     try {
