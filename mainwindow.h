@@ -1,9 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "calculate.h"
 #include <QMainWindow>
 #include <QKeyEvent>
-#include "parser.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +24,7 @@ private slots:
     void digitpressed();
     void backspacepressed();
     void CEpressed();
+    void Cpressed();
     void evaluatepressed();
     void spacepressed();
     void multiplypressed();

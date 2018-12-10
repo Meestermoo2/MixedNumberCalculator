@@ -30,6 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Divide, SIGNAL(released()), this, SLOT(dividepressed()));
     connect(ui->pushButton_Multiply, SIGNAL(released()), this, SLOT(multiplypressed()));
     connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
+    connect(ui->pushButton_C, SIGNAL(released()), this, SLOT(Cpressed()));
 
 
 }
@@ -39,54 +40,61 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::digitpressed() // for a generic signal where the text is the same as its output, we use this function
+void MainWindow::digitpressed() // for a generic signal where the text is the same as its ouput, we use this function
 {
     //grab the sender's text and append it to the current text.
     QPushButton * button = (QPushButton*)sender();
     QString newLabel;
 
-    newLabel = (ui->Output->text() + button->text());
-    ui->Output->setText(newLabel);
+    newLabel = (ui->Input->text() + button->text());
+    ui->Input->setText(newLabel);
 }
 
 void MainWindow::backspacepressed()
 {
     QString temp;
-    temp = ui->Output->text();
+    temp = ui->Input->text();
     temp.chop(1);
-    ui->Output->setText(temp);
+    ui->Input->setText(temp);
 }
 
 void MainWindow::CEpressed()
 { // delete everything
+    ui->Input->clear();
+}
+
+void MainWindow::Cpressed()
+{
+    ui->Input->clear();
     ui->Output->clear();
 }
 
+
 void MainWindow::evaluatepressed()
 {
-    QString newLabel = (ui->Output->text());
+    QString newLabel = (ui->Input->text());
     std::string parseString = newLabel.toStdString();
     Parser temp;
     temp << parseString;
     temp >> parseString;
     newLabel = QString::fromStdString(parseString);
-    ui->Input->setText(newLabel);
+    ui->Output->setText(newLabel);
 }
 
 void MainWindow::spacepressed()
 { // used for mixed numbers
     QString newLabel;
 
-    newLabel = (ui->Output->text() + " ");
-    ui->Output->setText(newLabel);
+    newLabel = (ui->Input->text() + " ");
+    ui->Input->setText(newLabel);
 }
 
 void MainWindow::multiplypressed()
 {
     QString newLabel;
 
-    newLabel = (ui->Output->text() + "*");
-    ui->Output->setText(newLabel);
+    newLabel = (ui->Input->text() + "*");
+    ui->Input->setText(newLabel);
 }
 
 
@@ -94,8 +102,8 @@ void MainWindow::dividepressed()
 {
     QString newLabel;
 
-    newLabel = (ui->Output->text() + "/");
-    ui->Output->setText(newLabel);
+    newLabel = (ui->Input->text() + "/");
+    ui->Input->setText(newLabel);
 }
 
 void MainWindow::keyPressEvent(QKeyEvent *e)
@@ -141,6 +149,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
         case Qt::Key_Delete:
             ui->pushButton_CE->released();
             break;
+        case Qt::Key_C:
+            ui->pushButton_C->released();
+            break;
         case Qt::Key_Asterisk:
             ui->pushButton_Multiply->released();
             break;
@@ -165,6 +176,12 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
         case Qt::Key_Equal:
             ui->pushButton_Evaluate->released();
             break;
+//        case Qt::Key_Right: //doesnt really work
+//            ui->pushButton_Space->released();
+//            break;
+//        case Qt::Key_Left: //doesnt really work
+//            ui->pushButton_Backspace->released();
+//            break;
         default:
             break;
     }
