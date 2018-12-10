@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_8,SIGNAL(released()), this, SLOT(digitpressed()));
     connect(ui->pushButton_9,SIGNAL(released()), this, SLOT(digitpressed()));
     connect(ui->pushButton_Decimal,SIGNAL(released()), this, SLOT(digitpressed()));
-    connect(ui->pushButton_RightParen,SIGNAL(released()), this, SLOT(digitpressed()));
-    connect(ui->pushButton_LeftParen,SIGNAL(released()), this, SLOT(digitpressed()));
+    connect(ui->pushButton_RightParen,SIGNAL(released()), this, SLOT(parenrightpressed()));
+    connect(ui->pushButton_LeftParen,SIGNAL(released()), this, SLOT(parenleftpressed()));
     connect(ui->pushButton_CE,SIGNAL(released()), this, SLOT(CEpressed()));
     connect(ui->pushButton_Backspace, SIGNAL(released()), this, SLOT(backspacepressed()));
     connect(ui->pushButton_Space, SIGNAL(released()), this, SLOT(spacepressed()));
@@ -143,6 +143,22 @@ void MainWindow::dividepressed()
     QString newLabel;
 
     newLabel = (ui->Input->text() + " / ");
+    ui->Input->setText(newLabel);
+}
+
+void MainWindow::parenleftpressed()
+{
+    QString newLabel;
+
+    newLabel = (ui->Input->text() + " ( ");
+    ui->Input->setText(newLabel);
+}
+
+void MainWindow::parenrightpressed()
+{
+    QString newLabel;
+
+    newLabel = (ui->Input->text() + " ) ");
     ui->Input->setText(newLabel);
 }
 
