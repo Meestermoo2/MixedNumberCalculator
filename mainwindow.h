@@ -30,6 +30,7 @@ private slots:
     void spacepressed();
     void multiplypressed();
     void dividepressed();
+    void ClearHistorypressed();
     void addpressed();
     void subtractpressed();
     void parenleftpressed();

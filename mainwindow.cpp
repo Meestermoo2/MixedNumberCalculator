@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Multiply, SIGNAL(released()), this, SLOT(multiplypressed()));
     connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
     connect(ui->pushButton_C, SIGNAL(released()), this, SLOT(Cpressed()));
+    connect(ui->pushButton_ClearHistory, SIGNAL(released()), this, SLOT(ClearHistorypressed()));
 }
 
 MainWindow::~MainWindow()
@@ -66,6 +67,11 @@ void MainWindow::Cpressed()
     ui->Input->clear();
     ui->Eval->clear();
     ui->RPN->clear();
+}
+
+void MainWindow::ClearHistorypressed()
+{
+    ui->History->clear();
 }
 
 
@@ -234,6 +240,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
             break;
         case Qt::Key_Return:
             ui->pushButton_Evaluate->released();
+            break;
+        case Qt::Key_End:
+            ui->pushButton_ClearHistory->released();
             break;
 //        case Qt::Key_Right: //doesnt really work
 //            ui->pushButton_Space->released();
