@@ -30,6 +30,8 @@ private slots:
     void spacepressed();
     void multiplypressed();
     void dividepressed();
+    void addpressed();
+    void subtractpressed();
     void keyPressEvent(QKeyEvent *event);
 
 };
