@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
+#include "parser.h"
 
 namespace Ui {
 class MainWindow;

@@ -29,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Subtract, SIGNAL(released()), this, SLOT(digitpressed()));
     connect(ui->pushButton_Divide, SIGNAL(released()), this, SLOT(dividepressed()));
     connect(ui->pushButton_Multiply, SIGNAL(released()), this, SLOT(multiplypressed()));
+    connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
+
 
 }
 
@@ -62,6 +64,13 @@ void MainWindow::CEpressed()
 
 void MainWindow::evaluatepressed()
 {
+    QString newLabel = (ui->Output->text());
+    std::string parseString = newLabel.toStdString();
+    Parser temp;
+    temp << parseString;
+    temp >> parseString;
+    newLabel = QString::fromStdString(parseString);
+    ui->Input->setText(newLabel);
 }
 
 void MainWindow::spacepressed()
@@ -152,6 +161,9 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
             break;
         case Qt::Key_Underscore:
             ui->pushButton_Space->released();
+            break;
+        case Qt::Key_Equal:
+            ui->pushButton_Evaluate->released();
             break;
         default:
             break;

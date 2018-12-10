@@ -26,10 +26,26 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        calculate.cpp \
+        calculatefriend.cpp \
+        fraction.cpp \
+        fractionfriend.cpp \
+        mixednumber.cpp \
+        mixednumberfriend.cpp \
+        parser.cpp \
+        parserfriend.cpp \
+        token.cpp \
+        tokenfriend.cpp
 
 HEADERS += \
-        mainwindow.h
+        calculate.h \
+        error.h \
+        fraction.h \
+        mainwindow.h \
+        mixednumber.h \
+        parser.h \
+        token.h
 
 FORMS += \
         mainwindow.ui
