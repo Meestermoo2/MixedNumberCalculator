@@ -22,10 +22,10 @@ void operator<<(Calculate &c, std::string& postfixExpression)
         if(debug) {std::cout << "\nStored: " << c.storedExpression << std::endl;}
         Token temp;
 
-        if(token.find_first_of('\0') < token.size())
+        if(token.find_first_of('_') < token.size())
         {
-            token[token.find_first_of('\0')] = ' ';
-            mixedNumber a ,b,c;
+            token[token.find_first_of('_')] = ' ';
+            mixedNumber a,b,c;
             aa.clear();
             aa >> token;
             aa << a;

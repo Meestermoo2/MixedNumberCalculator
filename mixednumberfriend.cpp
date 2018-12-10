@@ -9,10 +9,13 @@ std::ostream& operator<<( std::ostream &out, const mixedNumber &m)
          if(whole == 0)
              out<<numerator<<"/"<<m.denom;
         else
-             out<<whole<<char(0)<<abs(numerator)<<"/"<<m.denom;
+             out<<whole<<"_"<<abs(numerator)<<"/"<<m.denom;
      // We use a char(0) which is a null character to denote a space. This is primarily for use
      // in our parser class, which needs to differentiate between a space between tokens and
      // a space between mixed numbers.
+
+     // QTString:: We replaced our original implementation with underscores, since Qtstring functions differently and
+     // does not output null characters like the console terminal.
      return out;
 }
 

@@ -4,6 +4,7 @@
 #include "calculate.h"
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;

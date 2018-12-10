@@ -81,8 +81,9 @@ void MainWindow::evaluatepressed()
         parser << parseString;
 
         // Retrieve RPN expression
-        parser >> parseString;
-        newLabel = history = QString::fromStdString(parseString); // Create QString obj out of RPN
+        parseString = parser.getString();
+
+        newLabel = history = QString::fromStdString(parseString).replace(QString("_"), QString(" ")); // Create QString obj out of RPN
         ui->RPN->setText(newLabel); // Display RPN expression
 
         // Calculate RPN expression
@@ -91,8 +92,8 @@ void MainWindow::evaluatepressed()
         // Retrieve evaluated item
         calc >> parseString;
         history += QString::fromStdString("= " + parseString); // Add to history string
-        ui->Eval->setText(QString::fromStdString("= " + parseString)); // Display Evaluated expression
-
+        history.replace(QString("_"), QString(" "));
+        ui->Eval->setText(QString::fromStdString("= " + parseString).replace(QString("_"), QString(" "))); // Display Evaluated expression
         history.prepend(ui->History->text() + '\n'); // save current history
         ui->History->setText(history); // add history string to the label
     } catch (Error e) {
