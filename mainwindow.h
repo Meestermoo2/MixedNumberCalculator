@@ -4,6 +4,7 @@
 #include "calculate.h"
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QDebug>
 
 namespace Ui {
 class MainWindow;
@@ -29,7 +30,12 @@ private slots:
     void spacepressed();
     void multiplypressed();
     void dividepressed();
+<<<<<<< HEAD
     void ClearHistorypressed();
+=======
+    void addpressed();
+    void subtractpressed();
+>>>>>>> 05e8df42cc82905a63887f670327a17398be04bc
     void keyPressEvent(QKeyEvent *event);
 
 };

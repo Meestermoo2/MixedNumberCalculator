@@ -25,8 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->pushButton_Backspace, SIGNAL(released()), this, SLOT(backspacepressed()));
     connect(ui->pushButton_Space, SIGNAL(released()), this, SLOT(spacepressed()));
     connect(ui->pushButton_Frac, SIGNAL(released()), this, SLOT(digitpressed()));
-    connect(ui->pushButton_Add, SIGNAL(released()), this, SLOT(digitpressed()));
-    connect(ui->pushButton_Subtract, SIGNAL(released()), this, SLOT(digitpressed()));
+    connect(ui->pushButton_Add, SIGNAL(released()), this, SLOT(addpressed()));
+    connect(ui->pushButton_Subtract, SIGNAL(released()), this, SLOT(subtractpressed()));
     connect(ui->pushButton_Divide, SIGNAL(released()), this, SLOT(dividepressed()));
     connect(ui->pushButton_Multiply, SIGNAL(released()), this, SLOT(multiplypressed()));
     connect(ui->pushButton_Evaluate, SIGNAL(released()), this, SLOT(evaluatepressed()));
@@ -87,8 +87,9 @@ void MainWindow::evaluatepressed()
         parser << parseString;
 
         // Retrieve RPN expression
-        parser >> parseString;
-        newLabel = history = QString::fromStdString(parseString); // Create QString obj out of RPN
+        parseString = parser.getString();
+
+        newLabel = history = QString::fromStdString(parseString).replace(QString("_"), QString(" ")); // Create QString obj out of RPN
         ui->RPN->setText(newLabel); // Display RPN expression
 
         // Calculate RPN expression
@@ -97,8 +98,8 @@ void MainWindow::evaluatepressed()
         // Retrieve evaluated item
         calc >> parseString;
         history += QString::fromStdString("= " + parseString); // Add to history string
-        ui->Eval->setText(QString::fromStdString("= " + parseString)); // Display Evaluated expression
-
+        history.replace(QString("_"), QString(" "));
+        ui->Eval->setText(QString::fromStdString("= " + parseString).replace(QString("_"), QString(" "))); // Display Evaluated expression
         history.prepend(ui->History->text() + '\n'); // save current history
         ui->History->setText(history); // add history string to the label
     } catch (Error e) {
@@ -118,11 +119,27 @@ void MainWindow::spacepressed()
     ui->Input->setText(newLabel);
 }
 
+void MainWindow::subtractpressed()
+{
+    QString newLabel;
+
+    newLabel = (ui->Input->text() + " - ");
+    ui->Input->setText(newLabel);
+}
+
+void MainWindow::addpressed()
+{
+    QString newLabel;
+
+    newLabel = (ui->Input->text() + " + ");
+    ui->Input->setText(newLabel);
+}
+
 void MainWindow::multiplypressed()
 {
     QString newLabel;
 
-    newLabel = (ui->Input->text() + "*");
+    newLabel = (ui->Input->text() + " * ");
     ui->Input->setText(newLabel);
 }
 
@@ -131,7 +148,7 @@ void MainWindow::dividepressed()
 {
     QString newLabel;
 
-    newLabel = (ui->Input->text() + "/");
+    newLabel = (ui->Input->text() + " / ");
     ui->Input->setText(newLabel);
 }
 
