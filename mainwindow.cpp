@@ -83,6 +83,9 @@ void MainWindow::evaluatepressed()
         calc << parseString;
         newLabel = QString::fromStdString(parseString);
         ui->RPN->setText(newLabel);
+        QString temp = ui->History->text();
+        temp.append('\n' + newLabel);
+        ui->History->setText(temp);
         newLabel = QString::fromStdString(calc.getString());
         ui->Eval->setText(newLabel);
     } catch (Error e) {
